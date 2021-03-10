@@ -48,13 +48,13 @@ function shorturl(){
 
 var hashh = window.location.hash.substr(1)
 
-if (window.location.hash != "") {
+if (window.location.hash !== "") {
     $.getJSON(endpoint + "/" + hashh, function (data) {
-        var obj = data.find(o => o._collection === hashh)
+        var obj = data.find(o => o._collection === window.location.hash)
         var shorturl = obj.url;
         console.log(obj)
         console.log(shorturl)
-        if (data != null) {
+        if (obj !== null) {
             window.location.href = shorturl;
         }
     });
