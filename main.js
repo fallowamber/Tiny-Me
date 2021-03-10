@@ -1,13 +1,13 @@
 var endpoint = "https://jsonbox.io/box_ccb774670a8882eb3725";
 
-
 function geturl(){
     var url = document.getElementById("urlinput").value;
     var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
     if(!protocol_ok){
         newurl = "http://"+url;
         return newurl;
-        }else{
+        }
+    else{
             return url;
         }
 }
@@ -29,14 +29,16 @@ function genhash(){
 
 function send_request(url) {
     this.url = url;
-    $.ajax({
-        'url': endpoint + "/" + window.location.hash.substr(1),
+        $.ajax({
+        'url': endpoint,
         'type': 'POST',
-        'data': { url : JSON.stringify(this.url); },
+        'data': JSON.stringify({url: this.url, hash: this.hash}),
         'dataType': 'json',
         'contentType': 'application/json; charset=utf-8'
 })
 }
+
+
 
 function shorturl(){
     var longurl = geturl();
@@ -53,6 +55,5 @@ if (window.location.hash != "") {
         if (data != null) {
             window.location.href = data;
         }
-
     });
 }
