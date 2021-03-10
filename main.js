@@ -50,7 +50,7 @@ var hashh = window.location.hash.substr(1)
 
 if (window.location.hash != "") {
     $.getJSON(endpoint + "/" + hashh, function (data) {
-        data = data["result"];
+        data = data._url;
 
         if (data != null) {
             window.location.href = data;
