@@ -32,7 +32,7 @@ function send_request(url) {
         $.ajax({
         'url': endpoint + "/" + window.location.hash.substr(1),
         'type': 'POST',
-        'data': JSON.stringify({url: this.url}),
+        'data': JSON.stringify({url: this.url, hash }),
         'dataType': 'json',
         'contentType': 'application/json; charset=utf-8'
 })
@@ -50,8 +50,9 @@ var hashh = window.location.hash.substr(1)
 
 if (window.location.hash != "") {
     $.getJSON(endpoint + "/" + hashh, function (data) {
-        data = data._url;
-
+        console.log(data[url])
+        data = data.url;
+        console.log(data)
         if (data != null) {
             window.location.href = data;
         }
