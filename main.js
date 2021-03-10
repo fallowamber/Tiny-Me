@@ -48,7 +48,6 @@ var hashh = window.location.hash.substr(1)
 
 if (window.location.hash != "") {
     $.getJSON(endpoint + "/" + hashh, function (data) {
-        console.log(data)
         data = data["result"];
 
         if (data != null) {
