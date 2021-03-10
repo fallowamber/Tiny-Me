@@ -50,11 +50,12 @@ var hashh = window.location.hash.substr(1)
 
 if (window.location.hash != "") {
     $.getJSON(endpoint + "/" + hashh, function (data) {
-        console.log(data[url])
-        data = data.url;
-        console.log(data)
+        var obj = data.find(o => o._collection === hashh)
+        var shorturl = obj.url;
+        console.log(obj)
+        console.log(shorturl)
         if (data != null) {
-            window.location.href = data;
+            window.location.href = shorturl;
         }
     });
 }
